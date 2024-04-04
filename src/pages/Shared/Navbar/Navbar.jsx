@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import userDefaultPic from '../../../assets/user.png';
 
 const Navbar = () => {
@@ -34,9 +34,9 @@ const Navbar = () => {
                         <img src={userDefaultPic} />
                     </div>
                 </label>
-                <Link>
+                <NavLink to='/login'>
                     <button className="btn">Login</button>
-                </Link>
+                </NavLink>
             </div>
         </div>
     );
