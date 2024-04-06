@@ -11,15 +11,19 @@ const LeftSideNav = () => {
     }, [])
 
     return (
-        <div className="space-y-6">
-            <h2 className="text-2xl">All Categories</h2>
-            {
-                categories.map(category => <Link 
-                    className="block ml-4 text-xl font-semibold" 
-                    key={category.id}
-                    to={`/category/${category.id}`}
-                    >{category.name}</Link>)
-            }
+        <div className="space-y-1">
+            <h2 className="text-2xl font-semibold">All Categories</h2>
+            <div className="flex lg:inline-block md:inline-block">
+                {
+                    categories.map(category => 
+                    <Link 
+                        className="inline-block text-xl font-semibold hover:bg-slate-200 p-2 lg:px-12 md:px-2  w-full  " 
+                        key={category.id}
+                        to={`/category/${category.id}`}
+                        >{category.name}
+                    </Link>)
+                }
+            </div>
         </div>
     );
 };
