@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import Navbar from "../Shared/Navbar/Navbar"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../Providers/AuthProvider"
@@ -6,10 +6,12 @@ import { AuthContext } from "../../Providers/AuthProvider"
 
 const Signup = () => {
 
-  const {createUser, success, setSuccess, error, setError } = useContext(AuthContext)
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
+  const {createUser, success, setSuccess, error, setError } = useContext(AuthContext);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   
+  const location = useLocation();
+  const navigate = useNavigate('')
 
   const handleSignup = e =>{
     e.preventDefault();
@@ -45,6 +47,7 @@ const Signup = () => {
     .then(resut =>{
       console.log(resut.user)
       setSuccess('Registration Successful!')
+      navigate(location?.state ? location.state : '/');
     })
     .catch(error =>{
       console.error(error)

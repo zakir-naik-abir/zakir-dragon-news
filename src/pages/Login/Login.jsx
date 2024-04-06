@@ -10,6 +10,10 @@ const Login = () => {
   const { user, loginUser, success, setSuccess, error, setError, googleLogin, githubLogin, facebookLogin } = useContext(AuthContext);
   const location = useLocation()
   const navigate = useNavigate('')
+
+  setSuccess('');
+  setError('');
+  
   
   const handlelogin = e =>{
     e.preventDefault();
@@ -35,7 +39,8 @@ const Login = () => {
         googleLogin()
         .then(result =>{
           console.log(result.user)
-          setSuccess('Login success')
+          setSuccess('Login success');
+          navigate(location?.state ? location.state : '/');
         })
         .catch(error =>{
           console.error(error)
@@ -46,7 +51,8 @@ const Login = () => {
         githubLogin()
         .then(result =>{
           console.log(result.user)
-          setSuccess('Login success')
+          setSuccess('Login success');
+          navigate(location?.state ? location.state : '/');
         })
         .catch(error =>{
           console.error(error)
@@ -58,6 +64,7 @@ const Login = () => {
         .then(result =>{
           console.log(result.user)
           setSuccess('Login success')
+          navigate(location?.state ? location.state : '/');
         })
         .catch(error =>{
           console.error(error)
